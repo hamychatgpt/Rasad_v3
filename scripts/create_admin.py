@@ -43,7 +43,9 @@ async def create_admin_user():
         return
 
     # دریافت نشست دیتابیس
-    db_session = await anext(get_db())
+    async for session in get_db():
+        db_session = session
+        break
 
     # بررسی وجود کاربر
     stmt = select(AppUser).where(AppUser.email == email)

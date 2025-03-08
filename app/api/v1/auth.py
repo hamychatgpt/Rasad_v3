@@ -3,6 +3,7 @@
 
 این ماژول اندپوینت‌های مربوط به ورود، ثبت‌نام، و مدیریت کاربران سیستم را فراهم می‌کند.
 """
+from app.config import settings
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm

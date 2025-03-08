@@ -4,7 +4,6 @@
 این ماژول میان‌افزار مدیریت خطا را پیاده‌سازی می‌کند که خطاهای برنامه را گرفته
 و پاسخ‌های خطای مناسب را برمی‌گرداند.
 """
-
 import logging
 import traceback
 import json
@@ -14,7 +13,7 @@ from fastapi.responses import JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.types import ASGIApp
 
-from app.config import settings
+from app.config import settings  # اضافه کردن import مورد نیاز
 
 logger = logging.getLogger(__name__)
 

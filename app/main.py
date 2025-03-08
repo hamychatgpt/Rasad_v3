@@ -27,6 +27,8 @@ from app.api.v1.analysis import router as analysis_router
 from app.api.v1.waves import router as waves_router
 from app.api.v1.settings import router as settings_router
 
+from sqlalchemy import select, text
+
 # تنظیم لاگر
 logging.basicConfig(
     level=logging.INFO if not settings.DEBUG else logging.DEBUG,

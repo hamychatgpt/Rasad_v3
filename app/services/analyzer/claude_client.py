@@ -129,7 +129,8 @@ class ClaudeClient:
             logger.debug(f"Sending request to Claude API: {request_data.model_dump_json()}")
             response = await self.client.post(
                 url,
-                json=request_data.model_dump(exclude_none=True)
+                json=request_data.model_dump(exclude_none=True),
+                timeout=60.0
             )
             response.raise_for_status()
             data = response.json()

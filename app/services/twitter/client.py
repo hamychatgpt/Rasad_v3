@@ -12,10 +12,9 @@ from urllib.parse import urlencode
 import httpx
 
 from app.config import settings
-from app.twitter.models import (
-    TwitterSearchResponse, TwitterUserResponse, TwitterUserBatchResponse,
-    TwitterError, TwitterWebhookRule, TwitterWebhookResponse
-)
+
+
+from app.services.twitter.models import TwitterSearchResponse, TwitterUserResponse,TwitterUserBatchResponse, TwitterError, TwitterWebhookRule, TwitterWebhookResponse
 
 logger = logging.getLogger(__name__)
 
@@ -86,7 +85,7 @@ class TwitterAPIClient:
 
         try:
             logger.debug(f"Searching tweets with query: {query}, cursor: {cursor}")
-            response = await self.client.get(url, params=params)
+            response = await self.client.get(url, params=params, timeout=45.0)
             response.raise_for_status()
             data = response.json()
             logger.debug(f"Found {len(data.get('data', {}).get('tweets', []))} tweets")
